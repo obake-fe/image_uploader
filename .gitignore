@@ -1,6 +1,7 @@
 build
 src/image-uploader-firebase-adminsdk.json
 .firebase
+.env
 
 ## ignoreしない
 !.node-version
