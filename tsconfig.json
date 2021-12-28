@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    // TSはECMAScript 5に変換
-    "target": "es5",
-    // TSのモジュールはES Modulesとして出力
-    "module": "es2015",
-    // JSXの書式を有効に設定
-    "jsx": "react",
+    "target": "es5", // TSはECMAScript 5に変換
+    "module": "es2015", // TSのモジュールはES Modulesとして出力
+    "jsx": "react", // JSXの書式を有効に設定
+    "baseUrl": "src",
     "moduleResolution": "node",
+    "allowJs": true, // js, jsxファイルもビルド対象にする
+    "strict": true,
     "lib": [
       "es2020",
       "dom"
