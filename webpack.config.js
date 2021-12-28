@@ -1,11 +1,13 @@
+const path = require("path");
+
 module.exports = {
 	// モード値を production に設定すると最適化された状態で、
 	// development に設定するとソースマップ有効でJSファイルが出力される
 	mode: "development",
-	entry: "./src/main.tsx",
+	entry: "./src/index.tsx",
 	output: {
-		path: `${__dirname}/dist`, //  出力ファイルのディレクトリ名
-		filename: "main.js" // 出力ファイル名
+		path:  path.resolve(__dirname, "build"), //  出力ファイルのディレクトリ名
+		filename: "bundle.js", // 出力ファイル名
 	},
 	module: {
 		rules: [
@@ -14,6 +16,11 @@ module.exports = {
 				use: "ts-loader"
 			}
 		]
+	},
+	devServer: {
+		static: path.resolve(__dirname, "build"),
+		open: true,
+		port: 3000
 	},
 	resolve: {
 		// import 文で .ts や .tsx ファイルを解決するため

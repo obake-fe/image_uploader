@@ -8,9 +8,12 @@
     "moduleResolution": "node",
     "allowJs": true, // js, jsxファイルもビルド対象にする
     "strict": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2020",
       "dom"
     ]
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "scripts", "functions"]
 }
