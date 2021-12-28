@@ -19,7 +19,7 @@ module.exports = {
 	},
 	devServer: {
 		static: path.resolve(__dirname, "build"),
-		open: true,
+		// open: true,
 		port: 3000
 	},
 	resolve: {
