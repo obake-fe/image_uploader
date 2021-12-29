@@ -106,12 +106,7 @@ module.exports = {
         extensions: ['jsx', 'tsx']
       }
     ],
-    'react/jsx-props-no-spreading': [
-      'warn',
-      {
-        custom: 'ignore'
-      }
-    ],
+    'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
 
     // react hooks
