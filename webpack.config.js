@@ -24,7 +24,8 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, 'build'),
     // open: true,
-    port: 3000
+    port: 3000,
+    historyApiFallback: true // BrowserRouterのリロード不可対策
   },
   resolve: {
     // import 文で .ts や .tsx ファイルを解決するため
