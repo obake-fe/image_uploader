@@ -1,4 +1,6 @@
 const path = require('path');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -30,7 +32,19 @@ module.exports = {
   resolve: {
     // import 文で .ts や .tsx ファイルを解決するため
     // これを定義しないと import 文で拡張子を書く必要が生まれる。
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      os: 'os-browserify/browser',
+      path: 'path-browserify'
+    },
+    fallback: {
+      fs: false
+    }
   },
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     'process.env': JSON.stringify(dotenv.config().parsed)
+  //   })
+  // ],
   target: ['web', 'es5'] // ES5(IE11等)向けの指定（webpack 5以上で必要）
 };

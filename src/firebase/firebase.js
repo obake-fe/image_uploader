@@ -1,20 +1,21 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import "firebase/storage";
+import { initializeApp } from 'firebase/app';
+import { getStorage } from 'firebase/storage';
 
 // use env file
-require("dotenv").config();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+// require('dotenv').config();
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: process.env.API_KEY,
-	authDomain: process.env.AUTH_DOMAIN,
-	projectId: process.env.PROJECT_ID,
-	storageBucket: process.env.STORAGE_BUCKET,
-	messagingSenderId: process.env.MESSAGING_SENDER_ID,
-	appId: process.env.APP_ID,
+  apiKey: 'AIzaSyDrKZJkvEzQbkEcGcUCJBq1gTj1ie8u8Wg',
+  authDomain: 'image-uploader-9e187.firebaseapp.com',
+  projectId: 'image-uploader-9e187',
+  storageBucket: 'image-uploader-9e187.appspot.com',
+  messagingSenderId: '217533981530',
+  appId: '1:217533981530:web:6ac571f2d5489b7a01c963'
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const storage = firebase.storage();
+export const firebaseApp = initializeApp(firebaseConfig);
+export const storage = getStorage(firebaseApp);
