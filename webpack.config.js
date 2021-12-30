@@ -1,6 +1,6 @@
 const path = require('path');
-const dotenv = require('dotenv');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -8,13 +8,13 @@ module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'build'), //  出力ファイルのディレクトリ名
-    filename: 'bundle.js' // 出力ファイル名
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/, // 拡張子 .ts もしくは .tsx の場合
+        test: /\.tsx?$/,
         use: 'ts-loader'
       },
       {
@@ -41,10 +41,11 @@ module.exports = {
       fs: false
     }
   },
-  // plugins: [
-  //   new webpack.DefinePlugin({
-  //     'process.env': JSON.stringify(dotenv.config().parsed)
-  //   })
-  // ],
-  target: ['web', 'es5'] // ES5(IE11等)向けの指定（webpack 5以上で必要）
+  target: ['web', 'es5'], // ES5(IE11等)向けの指定（webpack 5以上で必要）
+  plugins: [
+    // dotenvで環境変数を読み込む
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed)
+    })
+  ]
 };
