@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/index.css';
 
 export const Index = () => {
   return (
@@ -9,6 +8,7 @@ export const Index = () => {
       <nav>
         <Link to="/">Home</Link>
         <Link to="upload">Upload</Link>
+        <Link to="signup">Status</Link>
       </nav>
     </div>
   );
