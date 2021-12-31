@@ -8,6 +8,7 @@ export const Index = () => {
       <nav>
         <Link to="/">Home</Link>
         <Link to="signup">SignUp</Link>
+        <Link to="login">Login</Link>
         <Link to="status">Status</Link>
         <Link to="upload">Upload</Link>
       </nav>

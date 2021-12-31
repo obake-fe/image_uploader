@@ -1,20 +1,18 @@
-import React from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { VFC } from 'react';
+import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
-import { useAuthContext } from './AuthContext';
 
-export const SignUp = () => {
-  const user = useAuthContext() || undefined;
+export const Login: VFC = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
-
-    await createUserWithEmailAndPassword(auth, email.value, password.value);
+    await signInWithEmailAndPassword(auth, email, password);
   };
 
   return (
     <div>
-      <h1>ユーザ登録 {user ? user.email : ''}</h1>
+      <h1>ログイン</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">
@@ -29,7 +27,10 @@ export const SignUp = () => {
           </label>
         </div>
         <div>
-          <button type="submit">登録</button>
+          <button type="submit">ログイン</button>
+        </div>
+        <div>
+          ユーザ登録は<Link to="/signup">こちら</Link>から
         </div>
       </form>
     </div>

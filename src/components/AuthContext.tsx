@@ -1,13 +1,24 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  ReactNode,
+  VFC
+} from 'react';
 import firebase from 'firebase/compat';
 import { auth } from '../firebase/firebase';
 import User = firebase.User;
+
+type Props = {
+  children: ReactNode;
+};
 
 const AuthContext = createContext(null);
 
 export const useAuthContext = (): User | null => useContext(AuthContext);
 
-export const AuthProvider = ({ children }: never) => {
+export const AuthProvider: VFC<Props> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
