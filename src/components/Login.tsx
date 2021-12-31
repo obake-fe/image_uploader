@@ -7,7 +7,7 @@ export const Login: VFC = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email.value, password.value);
   };
 
   return (
