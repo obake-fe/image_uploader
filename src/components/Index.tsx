@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/firebase';
 import { useAuthContext } from './AuthContext';
 
@@ -8,10 +8,11 @@ export const Index = () => {
   const { user } = useAuthContext();
   const handleLogout = async () => {
     await auth.signOut();
-    navigate('/login');
   };
 
-  if (!user) return <Navigate to="/login" />;
+  useEffect(() => {
+    if (!user) navigate('/login');
+  }, [user, navigate]);
 
   return (
     <div>

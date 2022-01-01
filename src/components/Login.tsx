@@ -1,22 +1,21 @@
 import React, { VFC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 
 export const Login: VFC = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
     await signInWithEmailAndPassword(auth, email.value, password.value);
+    navigate('/');
   };
 
   return (
     <div>
       <h1>ログイン</h1>
-      <nav>
-        <Link to="/signup">SignUp</Link>
-        <Link to="/login">Login</Link>
-      </nav>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">

@@ -9,8 +9,8 @@ import { Upload } from '../components/Upload';
  */
 export const PrivateRoutes = () => (
   <Routes>
-    <Route path="/" element={<Index />} />
     <Route path="/status" element={<Status />} />
     <Route path="/upload" element={<Upload />} />
+    <Route path="/*" element={<Index />} />
   </Routes>
 );
