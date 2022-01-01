@@ -13,6 +13,10 @@ export const Login: VFC = () => {
   return (
     <div>
       <h1>ログイン</h1>
+      <nav>
+        <Link to="/signup">SignUp</Link>
+        <Link to="/login">Login</Link>
+      </nav>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">

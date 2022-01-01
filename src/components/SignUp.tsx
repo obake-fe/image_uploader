@@ -4,7 +4,7 @@ import { auth } from '../firebase/firebase';
 import { useAuthContext } from './AuthContext';
 
 export const SignUp = () => {
-  const user = useAuthContext() || undefined;
+  const { user } = useAuthContext();
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const { email, password } = event.target.elements;

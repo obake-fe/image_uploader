@@ -3,6 +3,7 @@ import React, {
   useState,
   useContext,
   useEffect,
+  useMemo,
   ReactNode,
   VFC
 } from 'react';
@@ -14,17 +15,36 @@ type Props = {
   children: ReactNode;
 };
 
-const AuthContext = createContext(null);
+type ContextValue = {
+  user: User | null;
+  loading: boolean;
+};
 
-export const useAuthContext = (): User | null => useContext(AuthContext);
+const initialValue = {
+  user: null,
+  loading: false
+};
+
+const AuthContext = createContext<ContextValue>(initialValue);
+
+export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider: VFC<Props> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  const value = useMemo(() => {
+    return {
+      user,
+      loading
+    };
+  }, [user, loading]);
 
   useEffect(() => {
     // サインイン、サインアウトが行われると実行(onAuthStateChanged)
     const unsubscribed = auth.onAuthStateChanged((userValue) => {
       setUser(userValue);
+      setLoading(false);
     });
 
     // アンマウント時にイベントリスナを削除する
@@ -33,5 +53,13 @@ export const AuthProvider: VFC<Props> = ({ children }) => {
     };
   }, []);
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  if (loading) {
+    return <p>loading...</p>;
+  }
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
