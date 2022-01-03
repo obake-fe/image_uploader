@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -46,6 +47,10 @@ module.exports = {
     // dotenvで環境変数を読み込む
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.config().parsed)
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/html/index.html'
     })
   ]
 };
